@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nishil Faldu | Engineer & Builder</title>
+
+    <!-- Tech Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS CDN (v4) -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+        @theme {
+            --color-canvas: #ffffff;
+            --color-canvas-subtle: #fafafa;
+            --color-border: #e5e5e5;
+            
+            --color-text-main: #171717; /* Neutral 900 */
+            --color-text-muted: #737373; /* Neutral 500 */
+            --color-accent: #2563eb; /* Blue 600 - Classic Tech Blue */
+
+            --font-sans: Inter, sans-serif;
+            --font-mono: "JetBrains Mono", monospace;
+
+            --spacing-sidebar: 400px;
+        }
+    </style>
+
+    <style>
+        /* Smooth, minimalist scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e5e5e5;
+            border-radius: 9999px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #d4d4d4;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-canvas text-text-main font-sans h-screen w-screen overflow-hidden antialiased selection:bg-accent selection:text-white">
+
+    <div class="flex flex-col md:flex-row h-full w-full">
+
+        <!-- LEFT: Identity (Sidebar) -->
+        <aside
+            class="w-full md:w-sidebar flex-shrink-0 h-auto md:h-full p-8 md:p-12 flex flex-col justify-between border-b md:border-b-0 md:border-r border-border bg-canvas z-20 relative">
+
+            <!-- Top: Header -->
+            <div class="mb-8 md:mb-0">
+                <div class="flex items-center gap-3 mb-6">
+                    <div
+                        class="w-8 h-8 rounded bg-text-main flex items-center justify-center text-white font-mono text-sm font-bold">
+                        N</div>
+                    <span class="font-mono text-xs text-text-muted uppercase tracking-wider">Nishil Faldu</span>
+                </div>
+            </div>
+
+            <!-- Middle: Intro -->
+            <div class="my-8 md:my-0">
+                <h1
+                    class="font-sans font-semibold text-3xl md:text-4xl leading-tight mb-6 tracking-tight text-text-main">
+                    Engineer &<br>Builder.
+                </h1>
+
+                <p class="text-text-muted leading-relaxed mb-8 max-w-xs">
+                    I smash buttons until cool stuff happens.
+                </p>
+
+                <div class="grid gap-4 pt-8 border-t border-border">
+                    <div class="flex items-center justify-between group">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="map-pin"
+                                class="text-text-muted w-4 h-4 group-hover:text-text-main transition-colors"></i>
+                            <span class="text-sm text-text-muted">Based in</span>
+                        </div>
+                        <span class="font-mono text-sm text-text-main">Bangalore / Remote</span>
+                    </div>
+                    <div class="flex items-center justify-between group">
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="cpu"
+                                class="text-text-muted w-4 h-4 group-hover:text-text-main transition-colors"></i>
+                            <span class="text-sm text-text-muted">Focus</span>
+                        </div>
+                        <span class="font-mono text-sm text-text-main">Product Eng</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom: Links -->
+            <div class="hidden md:flex flex-col gap-2 font-mono text-xs">
+                <a href="https://x.com/FalduNishil" target="_blank" rel="noopener noreferrer"
+                    class="flex items-center gap-2 text-text-muted hover:text-accent transition-colors py-1">
+                    <span>01</span>
+                    <span>Twitter / X</span>
+                    <span class="ml-auto opacity-0 group-hover:opacity-100">↗</span>
+                </a>
+                <a href="https://www.linkedin.com/in/nishilfaldu" target="_blank" rel="noopener noreferrer"
+                    class="flex items-center gap-2 text-text-muted hover:text-accent transition-colors py-1">
+                    <span>02</span>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="mailto:nishilfaldu@gmail.com"
+                    class="flex items-center gap-2 text-text-muted hover:text-accent transition-colors py-1">
+                    <span>03</span>
+                    <span>Email</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- RIGHT: Work (Grid) -->
+        <main class="flex-grow h-full overflow-y-auto relative custom-scrollbar bg-canvas-subtle">
+            <!-- Grid Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-[1px] bg-border min-h-full content-start">
+
+                <!-- Project: 7WEST LMS + SIS -->
+                <article
+                    class="bg-canvas p-10 flex flex-col justify-between min-h-[400px] hover:bg-white transition-all duration-300 group relative">
+                    <div class="flex justify-between items-start mb-8">
+                        <div
+                            class="w-10 h-10 rounded bg-text-main flex items-center justify-center text-white font-mono text-lg font-bold">
+                            7
+                        </div>
+                        <span
+                            class="font-mono text-[10px] px-2 py-1 rounded-md bg-canvas-subtle border border-border text-text-muted uppercase tracking-wider group-hover:text-accent group-hover:border-accent/20 transition-colors">
+                            Platform
+                        </span>
+                    </div>
+                    <div class="relative z-10">
+                        <h3
+                            class="font-sans font-medium text-2xl mb-3 text-text-main tracking-tight group-hover:translate-x-1 transition-transform duration-300">
+                            7WEST LMS + SIS
+                        </h3>
+                        <p class="text-text-muted text-sm leading-relaxed max-w-[95%]">
+                            Full-fledged learning and student information platform for campuses, centralizing courses,
+                            communication, and operations into one product system.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-12 pt-6 border-t border-dashed border-border flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] text-text-muted uppercase tracking-wider mb-1">Status</span>
+                            <span class="font-mono text-xs text-text-main">Active Build</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://www.7west.space" target="_blank" rel="noopener noreferrer" title="Website"
+                                class="w-8 h-8 flex items-center justify-center rounded border border-border bg-canvas-subtle text-text-muted hover:text-accent hover:border-accent/50 transition-colors">
+                                <i data-lucide="globe" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project: 7WEST Student App -->
+                <article
+                    class="bg-canvas p-10 flex flex-col justify-between min-h-[400px] hover:bg-white transition-all duration-300 group relative">
+                    <div class="flex justify-between items-start mb-8">
+                        <div
+                            class="w-10 h-10 rounded bg-text-main flex items-center justify-center text-white font-mono text-lg font-bold">
+                            7
+                        </div>
+                        <span
+                            class="font-mono text-[10px] px-2 py-1 rounded-md bg-canvas-subtle border border-border text-text-muted uppercase tracking-wider group-hover:text-accent group-hover:border-accent/20 transition-colors">
+                            Mobile App
+                        </span>
+                    </div>
+                    <div class="relative z-10">
+                        <h3
+                            class="font-sans font-medium text-2xl mb-3 text-text-main tracking-tight group-hover:translate-x-1 transition-transform duration-300">
+                            7WEST Student Engagement App
+                        </h3>
+                        <p class="text-text-muted text-sm leading-relaxed max-w-[95%]">
+                            Student-focused mobile experience that unifies fragmented campus interactions and improves
+                            engagement through one streamlined app workflow.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-12 pt-6 border-t border-dashed border-border flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] text-text-muted uppercase tracking-wider mb-1">Status</span>
+                            <span class="font-mono text-xs text-text-main">Live on Stores</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://apps.apple.com/us/app/7west/id6746081102" target="_blank"
+                                rel="noopener noreferrer" title="iOS App"
+                                class="w-8 h-8 flex items-center justify-center rounded border border-border bg-canvas-subtle text-text-muted hover:text-accent hover:border-accent/50 transition-colors">
+                                <span class="font-bold text-[0.65rem] tracking-tight">iOS</span>
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=space.sevenwest.wall&hl=en_US"
+                                target="_blank" rel="noopener noreferrer" title="Android App"
+                                class="w-8 h-8 flex items-center justify-center rounded border border-border bg-canvas-subtle text-text-muted hover:text-accent hover:border-accent/50 transition-colors">
+                                <i data-lucide="smartphone" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project: OnePercent -->
+                <article
+                    class="bg-canvas p-10 flex flex-col justify-between min-h-[400px] hover:bg-white transition-all duration-300 group relative">
+                    <div class="flex justify-between items-start mb-8">
+                        <div
+                            class="w-10 h-10 rounded bg-text-main flex items-center justify-center text-white font-mono text-xs font-bold">
+                            1%
+                        </div>
+                        <span
+                            class="font-mono text-[10px] px-2 py-1 rounded-md bg-canvas-subtle border border-border text-text-muted uppercase tracking-wider group-hover:text-accent group-hover:border-accent/20 transition-colors">
+                            Full-Stack
+                        </span>
+                    </div>
+                    <div class="relative z-10">
+                        <h3
+                            class="font-sans font-medium text-2xl mb-3 text-text-main tracking-tight group-hover:translate-x-1 transition-transform duration-300">
+                            OnePercent
+                        </h3>
+                        <p class="text-text-muted text-sm leading-relaxed max-w-[95%]">
+                            Accountability product with Next.js, Convex auth/storage, and PWA push notifications.
+                            Built around daily task verification, partner workflows, and progress evidence.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-12 pt-6 border-t border-dashed border-border flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] text-text-muted uppercase tracking-wider mb-1">Stack</span>
+                            <span class="font-mono text-xs text-text-main">Next.js + Convex + TypeScript</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://onepercent-chi.vercel.app" target="_blank" rel="noopener noreferrer"
+                                title="Live Demo"
+                                class="w-8 h-8 flex items-center justify-center rounded border border-border bg-canvas-subtle text-text-muted hover:text-accent hover:border-accent/50 transition-colors">
+                                <i data-lucide="globe" class="w-4 h-4"></i>
+                            </a>
+                            <a href="https://github.com/nishilfaldu/onepercent" target="_blank"
+                                rel="noopener noreferrer" title="GitHub"
+                                class="w-8 h-8 flex items-center justify-center rounded border border-border bg-canvas-subtle text-text-muted hover:text-accent hover:border-accent/50 transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project: Easy RAG -->
+                <article
+                    class="bg-canvas p-10 flex flex-col justify-between min-h-[400px] hover:bg-white transition-all duration-300 group relative">
+                    <div class="flex justify-between items-start mb-8">
+                        <div
+                            class="w-10 h-10 rounded bg-text-main flex items-center justify-center text-white font-mono text-[9px] font-bold">
+                            RAG
+                        </div>
+                        <span
+                            class="font-mono text-[10px] px-2 py-1 rounded-md bg-canvas-subtle border border-border text-text-muted uppercase tracking-wider group-hover:text-accent group-hover:border-accent/20 transition-colors">
+                            AI Product
+                        </span>
+                    </div>
+                    <div class="relative z-10">
+                        <h3
+                            class="font-sans font-medium text-2xl mb-3 text-text-main tracking-tight group-hover:translate-x-1 transition-transform duration-300">
+                            Easy RAG
+                        </h3>
+                        <p class="text-text-muted text-sm leading-relaxed max-w-[95%]">
+                            Self-serve RAG platform that lets users deploy their own assistants on custom data sources
+                            including databases, files, and free-form text, with flexible retrieval pipelines.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-12 pt-6 border-t border-dashed border-border flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] text-text-muted uppercase tracking-wider mb-1">Stack</span>
+                            <span class="font-mono text-xs text-text-main">Next.js + Convex + LLM APIs</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://github.com/nishilfaldu/easy-rag" target="_blank" rel="noopener noreferrer"
+                                title="GitHub"
+                                class="w-8 h-8 flex items-center justify-center rounded border border-border bg-canvas-subtle text-text-muted hover:text-accent hover:border-accent/50 transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project: Memory -->
+                <article
+                    class="bg-canvas p-10 flex flex-col justify-between min-h-[400px] hover:bg-white transition-all duration-300 group relative">
+                    <div class="flex justify-between items-start mb-8">
+                        <div
+                            class="w-10 h-10 rounded bg-text-main flex items-center justify-center text-white font-mono text-[10px] font-bold">
+                            MEM
+                        </div>
+                        <span
+                            class="font-mono text-[10px] px-2 py-1 rounded-md bg-canvas-subtle border border-border text-text-muted uppercase tracking-wider group-hover:text-accent group-hover:border-accent/20 transition-colors">
+                            AI Infra
+                        </span>
+                    </div>
+                    <div class="relative z-10">
+                        <h3
+                            class="font-sans font-medium text-2xl mb-3 text-text-main tracking-tight group-hover:translate-x-1 transition-transform duration-300">
+                            Memory
+                        </h3>
+                        <p class="text-text-muted text-sm leading-relaxed max-w-[95%]">
+                            Human-like memory system for LLM agents with FastAPI, PostgreSQL + pgvector, and an MCP
+                            server. Supports episodic/semantic retrieval and consolidation workflows.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-12 pt-6 border-t border-dashed border-border flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] text-text-muted uppercase tracking-wider mb-1">Stack</span>
+                            <span class="font-mono text-xs text-text-main">FastAPI + pgvector + Next.js</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://github.com/nishilfaldu/memory" target="_blank" rel="noopener noreferrer"
+                                title="GitHub"
+                                class="w-8 h-8 flex items-center justify-center rounded border border-border bg-canvas-subtle text-text-muted hover:text-accent hover:border-accent/50 transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project: Canvas MCP -->
+                <article
+                    class="bg-canvas p-10 flex flex-col justify-between min-h-[400px] hover:bg-white transition-all duration-300 group relative">
+                    <div class="flex justify-between items-start mb-8">
+                        <div
+                            class="w-10 h-10 rounded bg-text-main flex items-center justify-center text-white font-mono text-[10px] font-bold">
+                            MCP
+                        </div>
+                        <span
+                            class="font-mono text-[10px] px-2 py-1 rounded-md bg-canvas-subtle border border-border text-text-muted uppercase tracking-wider group-hover:text-accent group-hover:border-accent/20 transition-colors">
+                            Backend
+                        </span>
+                    </div>
+                    <div class="relative z-10">
+                        <h3
+                            class="font-sans font-medium text-2xl mb-3 text-text-main tracking-tight group-hover:translate-x-1 transition-transform duration-300">
+                            Canvas MCP Worker
+                        </h3>
+                        <p class="text-text-muted text-sm leading-relaxed max-w-[95%]">
+                            Modular FastAPI tool server for Canvas LMS with type-safe models, tool auto-discovery, and
+                            structured JSON responses for LLM consumption.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-12 pt-6 border-t border-dashed border-border flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] text-text-muted uppercase tracking-wider mb-1">Stack</span>
+                            <span class="font-mono text-xs text-text-main">FastAPI + Pydantic + Vercel</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://github.com/nishilfaldu/canvas-mcp" target="_blank"
+                                rel="noopener noreferrer" title="GitHub"
+                                class="w-8 h-8 flex items-center justify-center rounded border border-border bg-canvas-subtle text-text-muted hover:text-accent hover:border-accent/50 transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project: Outlook MCP -->
+                <article
+                    class="bg-canvas p-10 flex flex-col justify-between min-h-[400px] hover:bg-white transition-all duration-300 group relative">
+                    <div class="flex justify-between items-start mb-8">
+                        <div
+                            class="w-10 h-10 rounded bg-text-main flex items-center justify-center text-white font-mono text-[10px] font-bold">
+                            API
+                        </div>
+                        <span
+                            class="font-mono text-[10px] px-2 py-1 rounded-md bg-canvas-subtle border border-border text-text-muted uppercase tracking-wider group-hover:text-accent group-hover:border-accent/20 transition-colors">
+                            Integration
+                        </span>
+                    </div>
+                    <div class="relative z-10">
+                        <h3
+                            class="font-sans font-medium text-2xl mb-3 text-text-main tracking-tight group-hover:translate-x-1 transition-transform duration-300">
+                            Outlook MCP Worker
+                        </h3>
+                        <p class="text-text-muted text-sm leading-relaxed max-w-[95%]">
+                            Email automation API for Microsoft Graph with tools for listing, searching, sending,
+                            replying, and deleting mail through a consistent MCP-style interface.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-12 pt-6 border-t border-dashed border-border flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] text-text-muted uppercase tracking-wider mb-1">Stack</span>
+                            <span class="font-mono text-xs text-text-main">Python + Graph API + Vercel</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://outlook-mcp-worker.vercel.app" target="_blank" rel="noopener noreferrer"
+                                title="Live API"
+                                class="w-8 h-8 flex items-center justify-center rounded border border-border bg-canvas-subtle text-text-muted hover:text-accent hover:border-accent/50 transition-colors">
+                                <i data-lucide="globe" class="w-4 h-4"></i>
+                            </a>
+                            <a href="https://github.com/nishilfaldu/outlook-mcp-worker" target="_blank"
+                                rel="noopener noreferrer" title="GitHub"
+                                class="w-8 h-8 flex items-center justify-center rounded border border-border bg-canvas-subtle text-text-muted hover:text-accent hover:border-accent/50 transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project: Expo Push Notifications -->
+                <article
+                    class="bg-canvas p-10 flex flex-col justify-between min-h-[400px] hover:bg-white transition-all duration-300 group relative">
+                    <div class="flex justify-between items-start mb-8">
+                        <div
+                            class="w-10 h-10 rounded bg-text-main flex items-center justify-center text-white font-mono text-[9px] font-bold">
+                            OSS
+                        </div>
+                        <span
+                            class="font-mono text-[10px] px-2 py-1 rounded-md bg-canvas-subtle border border-border text-text-muted uppercase tracking-wider group-hover:text-accent group-hover:border-accent/20 transition-colors">
+                            Open Source
+                        </span>
+                    </div>
+                    <div class="relative z-10">
+                        <h3
+                            class="font-sans font-medium text-2xl mb-3 text-text-main tracking-tight group-hover:translate-x-1 transition-transform duration-300">
+                            Expo Push Notifications
+                        </h3>
+                        <p class="text-text-muted text-sm leading-relaxed max-w-[95%]">
+                            TypeScript component for Convex + Expo push notifications with batching, retry handling,
+                            status tracking, and clean integration APIs for mobile apps.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-12 pt-6 border-t border-dashed border-border flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] text-text-muted uppercase tracking-wider mb-1">Stack</span>
+                            <span class="font-mono text-xs text-text-main">TypeScript + Convex + Expo</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://www.npmjs.com/package/@convex-dev/expo-push-notifications" target="_blank"
+                                rel="noopener noreferrer" title="NPM Package"
+                                class="w-8 h-8 flex items-center justify-center rounded border border-border bg-canvas-subtle text-text-muted hover:text-accent hover:border-accent/50 transition-colors">
+                                <i data-lucide="package" class="w-4 h-4"></i>
+                            </a>
+                            <a href="https://github.com/nishilfaldu/expo-push-notifications" target="_blank"
+                                rel="noopener noreferrer" title="GitHub"
+                                class="w-8 h-8 flex items-center justify-center rounded border border-border bg-canvas-subtle text-text-muted hover:text-accent hover:border-accent/50 transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project: Eventure -->
+                <article
+                    class="bg-canvas p-10 flex flex-col justify-between min-h-[400px] hover:bg-white transition-all duration-300 group relative">
+                    <div class="flex justify-between items-start mb-8">
+                        <div
+                            class="w-10 h-10 rounded bg-text-main flex items-center justify-center text-white font-mono text-[9px] font-bold">
+                            EVT
+                        </div>
+                        <span
+                            class="font-mono text-[10px] px-2 py-1 rounded-md bg-canvas-subtle border border-border text-text-muted uppercase tracking-wider group-hover:text-accent group-hover:border-accent/20 transition-colors">
+                            Full Project
+                        </span>
+                    </div>
+                    <div class="relative z-10">
+                        <h3
+                            class="font-sans font-medium text-2xl mb-3 text-text-main tracking-tight group-hover:translate-x-1 transition-transform duration-300">
+                            Eventure
+                        </h3>
+                        <p class="text-text-muted text-sm leading-relaxed max-w-[95%]">
+                            Event management application with planning and collaboration workflows, plus a companion
+                            real-time socket server for live interactions.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-12 pt-6 border-t border-dashed border-border flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] text-text-muted uppercase tracking-wider mb-1">Type</span>
+                            <span class="font-mono text-xs text-text-main">Web + Realtime Backend</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://github.com/nishilfaldu/eventure" target="_blank" rel="noopener noreferrer"
+                                title="Main Repo"
+                                class="w-8 h-8 flex items-center justify-center rounded border border-border bg-canvas-subtle text-text-muted hover:text-accent hover:border-accent/50 transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                            <a href="https://github.com/nishilfaldu/eventure-socket-server" target="_blank"
+                                rel="noopener noreferrer" title="Socket Server"
+                                class="w-8 h-8 flex items-center justify-center rounded border border-border bg-canvas-subtle text-text-muted hover:text-accent hover:border-accent/50 transition-colors">
+                                <i data-lucide="server" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project: Univ Marketplace -->
+                <article
+                    class="bg-canvas p-10 flex flex-col justify-between min-h-[400px] hover:bg-white transition-all duration-300 group relative">
+                    <div class="flex justify-between items-start mb-8">
+                        <div
+                            class="w-10 h-10 rounded bg-text-main flex items-center justify-center text-white font-mono text-[8px] font-bold">
+                            UNI
+                        </div>
+                        <span
+                            class="font-mono text-[10px] px-2 py-1 rounded-md bg-canvas-subtle border border-border text-text-muted uppercase tracking-wider group-hover:text-accent group-hover:border-accent/20 transition-colors">
+                            Marketplace
+                        </span>
+                    </div>
+                    <div class="relative z-10">
+                        <h3
+                            class="font-sans font-medium text-2xl mb-3 text-text-main tracking-tight group-hover:translate-x-1 transition-transform duration-300">
+                            University Marketplace
+                        </h3>
+                        <p class="text-text-muted text-sm leading-relaxed max-w-[95%]">
+                            University marketplace application focused on campus buying/selling workflows and practical
+                            product architecture for student transactions.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-12 pt-6 border-t border-dashed border-border flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] text-text-muted uppercase tracking-wider mb-1">Stack</span>
+                            <span class="font-mono text-xs text-text-main">React + Redux Toolkit</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://github.com/nishilfaldu/univ-marketplace" target="_blank"
+                                rel="noopener noreferrer" title="GitHub"
+                                class="w-8 h-8 flex items-center justify-center rounded border border-border bg-canvas-subtle text-text-muted hover:text-accent hover:border-accent/50 transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project: A Compiler in Go -->
+                <article
+                    class="bg-canvas p-10 flex flex-col justify-between min-h-[400px] hover:bg-white transition-all duration-300 group relative">
+                    <div class="flex justify-between items-start mb-8">
+                        <div
+                            class="w-10 h-10 rounded bg-text-main flex items-center justify-center text-white font-mono text-[9px] font-bold">
+                            GO
+                        </div>
+                        <span
+                            class="font-mono text-[10px] px-2 py-1 rounded-md bg-canvas-subtle border border-border text-text-muted uppercase tracking-wider group-hover:text-accent group-hover:border-accent/20 transition-colors">
+                            Systems
+                        </span>
+                    </div>
+                    <div class="relative z-10">
+                        <h3
+                            class="font-sans font-medium text-2xl mb-3 text-text-main tracking-tight group-hover:translate-x-1 transition-transform duration-300">
+                            A Compiler in Go
+                        </h3>
+                        <p class="text-text-muted text-sm leading-relaxed max-w-[95%]">
+                            Custom language compiler with lexer, parser, AST, symbol table, semantic checks, REPL, and
+                            parser/lexer tests for correctness across valid and invalid programs.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-12 pt-6 border-t border-dashed border-border flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] text-text-muted uppercase tracking-wider mb-1">Stack</span>
+                            <span class="font-mono text-xs text-text-main">Go + Compiler Design</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://github.com/nishilfaldu/a-compiler-in-go" target="_blank"
+                                rel="noopener noreferrer" title="GitHub"
+                                class="w-8 h-8 flex items-center justify-center rounded border border-border bg-canvas-subtle text-text-muted hover:text-accent hover:border-accent/50 transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project: Save the Roadster -->
+                <article
+                    class="bg-canvas p-10 flex flex-col justify-between min-h-[400px] hover:bg-white transition-all duration-300 group relative">
+                    <div class="flex justify-between items-start mb-8">
+                        <div
+                            class="w-10 h-10 rounded bg-text-main flex items-center justify-center text-white font-mono text-[8px] font-bold">
+                            C++
+                        </div>
+                        <span
+                            class="font-mono text-[10px] px-2 py-1 rounded-md bg-canvas-subtle border border-border text-text-muted uppercase tracking-wider group-hover:text-accent group-hover:border-accent/20 transition-colors">
+                            Game Dev
+                        </span>
+                    </div>
+                    <div class="relative z-10">
+                        <h3
+                            class="font-sans font-medium text-2xl mb-3 text-text-main tracking-tight group-hover:translate-x-1 transition-transform duration-300">
+                            Save the Roadster
+                        </h3>
+                        <p class="text-text-muted text-sm leading-relaxed max-w-[95%]">
+                            C++ game project demonstrating gameplay logic, movement systems, and interactive state
+                            management in a desktop game format.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-12 pt-6 border-t border-dashed border-border flex flex-wrap items-center justify-between gap-4">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] text-text-muted uppercase tracking-wider mb-1">Stack</span>
+                            <span class="font-mono text-xs text-text-main">C++ + Qt Project</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <a href="https://github.com/nishilfaldu/save-the-roadster" target="_blank"
+                                rel="noopener noreferrer" title="GitHub"
+                                class="w-8 h-8 flex items-center justify-center rounded border border-border bg-canvas-subtle text-text-muted hover:text-accent hover:border-accent/50 transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Footer for Mobile -->
+                <div class="md:hidden col-span-1 p-8 bg-canvas border-t border-border">
+                    <div class="flex gap-6 justify-center font-mono text-xs">
+                        <a href="https://x.com/FalduNishil" target="_blank" rel="noopener noreferrer"
+                            class="text-text-muted hover:text-text-main">Twitter</a>
+                        <a href="https://www.linkedin.com/in/nishilfaldu" target="_blank" rel="noopener noreferrer"
+                            class="text-text-muted hover:text-text-main">LinkedIn</a>
+                    </div>
+                    <div class="text-center mt-6 text-[10px] text-text-muted uppercase tracking-widest">
+                        &copy; 2026 Nishil Faldu
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

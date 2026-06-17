@@ -55,6 +55,7 @@
 
         html {
             -webkit-text-size-adjust: 100%;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -112,12 +113,85 @@
             font-style: italic;
         }
 
+        /* Anchors land a little below the top edge when jumped to */
+        [id] {
+            scroll-margin-top: 30vh;
+        }
+
         .contact {
             margin-top: 3.5rem;
         }
 
         .contact a {
             white-space: nowrap;
+        }
+
+        .contact .former {
+            text-decoration: line-through;
+            text-decoration-thickness: 1px;
+        }
+
+        /* A quiet stack of dashes: one per project, a way to jump straight in */
+        .toc {
+            position: fixed;
+            top: 50%;
+            right: 1.6rem;
+            transform: translateY(-50%);
+            display: none;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+
+        .toc a {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.65rem;
+            text-decoration: none;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .toc a:focus-visible {
+            outline: none;
+        }
+
+        .toc .dash {
+            display: block;
+            width: 16px;
+            height: 1.5px;
+            background: rgba(31, 30, 28, 0.28);
+            transition: width 0.18s ease, background 0.18s ease;
+        }
+
+        .toc a:hover .dash,
+        .toc a:focus-visible .dash,
+        .toc a.active .dash {
+            width: 28px;
+            background: var(--accent);
+        }
+
+        .toc .label {
+            font-size: 0.82rem;
+            letter-spacing: 0.01em;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(4px);
+            transition: opacity 0.18s ease, transform 0.18s ease;
+            pointer-events: none;
+        }
+
+        .toc a:hover .label,
+        .toc a:focus-visible .label {
+            opacity: 1;
+            transform: none;
+        }
+
+        @media (min-width: 64rem) {
+            .toc {
+                display: flex;
+            }
         }
 
         @media (min-width: 40rem) {
@@ -135,7 +209,13 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-            a {
+            html {
+                scroll-behavior: auto;
+            }
+
+            a,
+            .toc .dash,
+            .toc .label {
                 transition: none;
             }
         }
@@ -143,6 +223,29 @@
 </head>
 
 <body>
+    <nav class="toc" aria-label="Projects">
+        <a href="#p-save-the-roadster"><span class="label">C++ game</span><span class="dash"></span></a>
+        <a href="#p-ml-deep-learning-courses"><span class="label">Andrew Ng courses</span><span class="dash"></span></a>
+        <a href="#p-bert-sentiment-pytorch"><span class="label">First model</span><span class="dash"></span></a>
+        <a href="#p-insite-factcheck"><span class="label">Fact checker</span><span class="dash"></span></a>
+        <a href="#p-hackathon-stats-dashboard"><span class="label">Stats dashboard</span><span class="dash"></span></a>
+        <a href="#p-campaign-websites"><span class="label">Campaign sites</span><span class="dash"></span></a>
+        <a href="#p-eventure"><span class="label">Event app</span><span class="dash"></span></a>
+        <a href="#p-alterna-canvas"><span class="label">Canvas</span><span class="dash"></span></a>
+        <a href="#p-coursework"><span class="label">Coursework</span><span class="dash"></span></a>
+        <a href="#p-cedar-lang"><span class="label">Compiler</span><span class="dash"></span></a>
+        <a href="#p-lda-models"><span class="label">Topic model</span><span class="dash"></span></a>
+        <a href="#p-easy-rag"><span class="label">RAG</span><span class="dash"></span></a>
+        <a href="#p-vector-search-ecommerce"><span class="label">Vector search</span><span class="dash"></span></a>
+        <a href="#p-smart-reviewer"><span class="label">News reviewer</span><span class="dash"></span></a>
+        <a href="#p-neon-nerdsnipe"><span class="label">Login agent</span><span class="dash"></span></a>
+        <a href="#p-sediment"><span class="label">Sediment</span><span class="dash"></span></a>
+        <a href="#p-mcp-servers"><span class="label">MCP servers</span><span class="dash"></span></a>
+        <a href="#p-reachcast"><span class="label">Raycast extension</span><span class="dash"></span></a>
+        <a href="#p-pulse"><span class="label">Pulse</span><span class="dash"></span></a>
+        <a href="#p-belle"><span class="label">Belle</span><span class="dash"></span></a>
+    </nav>
+
     <main>
         <h1>Hi, I'm Nishil Faldu.</h1>
 
@@ -162,7 +265,7 @@
             seven of C++ we got to structs, and for some reason that was the lesson where
             everything fell into place. The next week was classes and objects and I just
             got it. I ended up building
-            <a href="https://github.com/nishilfaldu/save-the-roadster">a game in C++</a>
+            <a id="p-save-the-roadster" href="https://github.com/nishilfaldu/save-the-roadster">a game in C++</a>
             for my final project. It was a pair project but I did most of it, because for
             the first time I actually wanted to.</p>
 
@@ -171,9 +274,9 @@
             some Java, more C++. Then I found machine learning, this perfect mix of code
             and math, and fell hard for it. I was handwriting notes in a notebook to
             understand it, working through
-            <a href="https://github.com/nishilfaldu/ml-deep-learning-courses">all the
+            <a id="p-ml-deep-learning-courses" href="https://github.com/nishilfaldu/ml-deep-learning-courses">all the
                 Andrew Ng courses</a>. Around then I trained
-            <a href="https://github.com/nishilfaldu/bert-sentiment-pytorch">my first real
+            <a id="p-bert-sentiment-pytorch" href="https://github.com/nishilfaldu/bert-sentiment-pytorch">my first real
                 model</a>, a small thing that learned to read the mood of a review, and
             watching it work felt like proof I was in the right place. So I switched my
             major to computer science for real.</p>
@@ -184,18 +287,18 @@
             funny.)</p>
 
         <p>Those years I made things constantly, most of them just for the fun of it. There
-            was a <a href="https://github.com/nishilfaldu/insite-factcheck">fact
+            was a <a id="p-insite-factcheck" href="https://github.com/nishilfaldu/insite-factcheck">fact
                 checker</a> to catch COVID misinformation at a hackathon I was competing in,
-            and a <a href="https://github.com/nishilfaldu/hackathon-stats-dashboard">stats
+            and a <a id="p-hackathon-stats-dashboard" href="https://github.com/nishilfaldu/hackathon-stats-dashboard">stats
                 dashboard</a> for another one I was helping run. I made three
-            <a href="https://github.com/nishilfaldu/campaign-websites">campaign sites</a>
+            <a id="p-campaign-websites" href="https://github.com/nishilfaldu/campaign-websites">campaign sites</a>
             for friends running for student government, one a year. My senior project was
-            an <a href="https://github.com/nishilfaldu/eventure">app for planning
+            an <a id="p-eventure" href="https://github.com/nishilfaldu/eventure">app for planning
                 events</a>, built with a partner while the two of us figured out video
             calls for the first time. A class assignment turned into a
-            <a href="https://github.com/nishilfaldu/alterna-canvas">take on Canvas</a>
+            <a id="p-alterna-canvas" href="https://github.com/nishilfaldu/alterna-canvas">take on Canvas</a>
             where keeping up with coursework grew a small garden. Even my old
-            <a href="https://github.com/nishilfaldu/coursework">coursework</a> is still up,
+            <a id="p-coursework" href="https://github.com/nishilfaldu/coursework">coursework</a> is still up,
             kept because I liked it. None of it was meant to be important, and somehow all
             of it taught me the most.</p>
 
@@ -203,40 +306,40 @@
             7WEST, where I shipped a campus social app to 500+ students across more than
             fifteen universities, and a K-12 learning platform used by around 6,000
             accounts, mostly as the only engineer. Before AI could do it for me, I wrote
-            <a href="https://github.com/nishilfaldu/cedar-lang">a small compiler in Go</a>
+            <a id="p-cedar-lang" href="https://github.com/nishilfaldu/cedar-lang">a small compiler in Go</a>
             from scratch, just to see if I could.</p>
 
         <p>Machine learning kept pulling me back the whole time. I trained a model to
-            surface <a href="https://github.com/nishilfaldu/lda-models">the hidden
+            surface <a id="p-lda-models" href="https://github.com/nishilfaldu/lda-models">the hidden
                 themes</a> in a million news headlines. I built a
-            <a href="https://github.com/nishilfaldu/easy-rag">way to spin up chatbots</a>
+            <a id="p-easy-rag" href="https://github.com/nishilfaldu/easy-rag">way to spin up chatbots</a>
             that actually know your own documents. At Tembo, working as a software
             engineer, I built a store where
-            <a href="https://github.com/nishilfaldu/vector-search-ecommerce">search lives
+            <a id="p-vector-search-ecommerce" href="https://github.com/nishilfaldu/vector-search-ecommerce">search lives
                 entirely inside the database</a>, the demo for a deep dive I was writing on
             their blog. One company's take-home was a little
-            <a href="https://github.com/nishilfaldu/smart-reviewer">news reviewer</a>;
+            <a id="p-smart-reviewer" href="https://github.com/nishilfaldu/smart-reviewer">news reviewer</a>;
             another's had me send an
-            <a href="https://github.com/nishilfaldu/neon-nerdsnipe">agent</a> to crack a
+            <a id="p-neon-nerdsnipe" href="https://github.com/nishilfaldu/neon-nerdsnipe">agent</a> to crack a
             login puzzle.</p>
 
         <p>These days I build a lot, and faster than I used to. Mostly I build to get rid
             of noise, because there are always too many threads in my head and I like
             quieting them.
-            <a href="https://github.com/nishilfaldu/atlas">A tool</a> so an AI doesn't
+            A tool so an AI doesn't
             waste a thousand tokens screenshotting a website when it could just test it
             first.
-            <a href="https://github.com/nishilfaldu/sediment">One place</a> to throw every
+            <a id="p-sediment" href="https://github.com/nishilfaldu/sediment">One place</a> to throw every
             bit of inspiration I find instead of leaving it scattered across five apps.
-            <a href="https://github.com/nishilfaldu/mcp-servers">A few small servers</a> so
+            <a id="p-mcp-servers" href="https://github.com/nishilfaldu/mcp-servers">A few small servers</a> so
             an agent can reach into my calendar and inbox instead of me doing it by hand.
-            <a href="https://github.com/nishilfaldu/reachcast">A Raycast extension</a> for
+            <a id="p-reachcast" href="https://github.com/nishilfaldu/reachcast">A Raycast extension</a> for
             the cold emails. Small things that take a mess and make it sit still.</p>
 
         <p>Plenty of it never shipped, and I've made peace with that. A
-            <a href="https://github.com/nishilfaldu/pulse">game</a> where everyone gets the
+            <a id="p-pulse" href="https://github.com/nishilfaldu/pulse">game</a> where everyone gets the
             same single quest each day. A
-            <a href="https://github.com/nishilfaldu/belle">storefront</a> for a patisserie.
+            <a id="p-belle" href="https://github.com/nishilfaldu/belle">storefront</a> for a patisserie.
             Half-finished, most of them, and I built them to find out whether I could. That
             was enough.</p>
 
@@ -249,11 +352,39 @@
         <p>If any of that resonates, say hi.</p>
 
         <p class="contact">
-            <a href="https://x.com/FalduNishil">Twitter</a> &middot;
+            <a href="https://x.com/FalduNishil"><span class="former">Twitter</span> X</a> &middot;
             <a href="https://github.com/nishilfaldu">GitHub</a> &middot;
             <a href="https://www.linkedin.com/in/nishilfaldu">LinkedIn</a>
         </p>
     </main>
+
+    <script>
+        // Highlight the dash for whichever project is nearest the middle of the screen
+        (function () {
+            var dashes = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
+            if (!dashes.length || !('IntersectionObserver' in window)) return;
+
+            var map = {};
+            dashes.forEach(function (d) {
+                map[d.getAttribute('href').slice(1)] = d;
+            });
+
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        dashes.forEach(function (d) { d.classList.remove('active'); });
+                        var d = map[e.target.id];
+                        if (d) d.classList.add('active');
+                    }
+                });
+            }, { rootMargin: '-45% 0px -45% 0px' });
+
+            Object.keys(map).forEach(function (id) {
+                var el = document.getElementById(id);
+                if (el) io.observe(el);
+            });
+        })();
+    </script>
 </body>
 
 </html>

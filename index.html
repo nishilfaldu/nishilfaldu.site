@@ -456,30 +456,50 @@
             });
         })();
 
-        // Highlight the dash for whichever project is nearest the middle of the screen
+        // Highlight the dash for the project nearest the top of the reading
+        // area. The 35% line matches where clicks and deep links land (the
+        // 30vh scroll-margin), so the clicked dash is the one that lights up.
         (function () {
             var dashes = Array.prototype.slice.call(document.querySelectorAll('.toc a'));
-            if (!dashes.length || !('IntersectionObserver' in window)) return;
+            if (!dashes.length) return;
 
-            var map = {};
-            dashes.forEach(function (d) {
-                map[d.getAttribute('href').slice(1)] = d;
-            });
+            var items = dashes.map(function (d) {
+                return { dash: d, el: document.getElementById(d.getAttribute('href').slice(1)) };
+            }).filter(function (it) { return it.el; });
+            if (!items.length) return;
 
-            var io = new IntersectionObserver(function (entries) {
-                entries.forEach(function (e) {
-                    if (e.isIntersecting) {
-                        dashes.forEach(function (d) { d.classList.remove('active'); });
-                        var d = map[e.target.id];
-                        if (d) d.classList.add('active');
+            var ticking = false;
+
+            function update() {
+                ticking = false;
+                // The line sits where clicks and deep links land (30vh). Pick the
+                // project closest to it, so the clicked one wins even when two
+                // links sit close together in the same paragraph.
+                var line = window.innerHeight * 0.3;
+                var current = null;
+                var best = Infinity;
+                items.forEach(function (it) {
+                    var dist = Math.abs(it.el.getBoundingClientRect().top - line);
+                    if (dist < best) {
+                        best = dist;
+                        current = it;
                     }
                 });
-            }, { rootMargin: '-45% 0px -45% 0px' });
+                dashes.forEach(function (d) { d.classList.remove('active'); });
+                if (current) current.dash.classList.add('active');
+            }
 
-            Object.keys(map).forEach(function (id) {
-                var el = document.getElementById(id);
-                if (el) io.observe(el);
-            });
+            function onScroll() {
+                if (!ticking) {
+                    ticking = true;
+                    requestAnimationFrame(update);
+                }
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', onScroll);
+            window.addEventListener('load', update);
+            update();
         })();
 
         // On small screens the dash stack collapses into a button that opens the list
@@ -513,6 +533,9 @@
                     e.preventDefault();
                     target.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
                     history.pushState(null, '', '#' + id);
+                    // Light up the clicked bar straight away
+                    nav.querySelectorAll('a').forEach(function (a) { a.classList.remove('active'); });
+                    link.classList.add('active');
                 }
                 close();
             });

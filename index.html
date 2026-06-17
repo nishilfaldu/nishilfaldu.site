@@ -440,6 +440,22 @@
     </main>
 
     <script>
+        // Deep-link without the focus box: on reload with a fragment, Chrome
+        // scrolls to the target and focuses it, drawing the focus-visible
+        // outline. Strip the hash before the browser acts, then scroll there
+        // ourselves and restore the hash without moving focus.
+        (function () {
+            if (!location.hash) return;
+            var id = location.hash.slice(1);
+            var el = document.getElementById(id);
+            if (!el) return;
+            history.replaceState(null, '', location.pathname + location.search);
+            window.addEventListener('load', function () {
+                el.scrollIntoView({ block: 'start' });
+                history.replaceState(null, '', '#' + id);
+            });
+        })();
+
         // Highlight the dash for whichever project is nearest the middle of the screen
         (function () {
             var dashes = Array.prototype.slice.call(document.querySelectorAll('.toc a'));

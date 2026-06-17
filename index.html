@@ -188,9 +188,82 @@
             transform: none;
         }
 
+        /* The toggle is the same stack of dashes, shrunk to an icon for small screens */
+        .toc-toggle {
+            display: none;
+        }
+
         @media (min-width: 64rem) {
             .toc {
                 display: flex;
+            }
+        }
+
+        @media (max-width: 63.99rem) {
+            .toc-toggle {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                position: fixed;
+                bottom: 1.4rem;
+                right: 1.4rem;
+                z-index: 20;
+                padding: 11px 12px;
+                background: var(--paper);
+                border: 1px solid rgba(31, 30, 28, 0.15);
+                border-radius: 10px;
+                box-shadow: 0 2px 12px rgba(31, 30, 28, 0.1);
+                cursor: pointer;
+            }
+
+            .toc-toggle span {
+                display: block;
+                width: 18px;
+                height: 1.5px;
+                background: var(--ink);
+            }
+
+            .toc {
+                display: flex;
+                position: fixed;
+                top: auto;
+                bottom: 5.1rem;
+                right: 1.4rem;
+                transform: translateY(8px);
+                max-width: 70vw;
+                max-height: 60vh;
+                overflow-y: auto;
+                gap: 0.1rem;
+                padding: 0.8rem 1.15rem;
+                background: var(--paper);
+                border: 1px solid rgba(31, 30, 28, 0.15);
+                border-radius: 12px;
+                box-shadow: 0 8px 28px rgba(31, 30, 28, 0.14);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+            }
+
+            body.toc-open .toc {
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+            }
+
+            .toc a {
+                justify-content: flex-start;
+                padding: 0.32rem 0;
+            }
+
+            .toc .dash {
+                display: none;
+            }
+
+            .toc .label {
+                opacity: 1;
+                transform: none;
+                pointer-events: auto;
+                font-size: 0.98rem;
             }
         }
 
@@ -214,6 +287,7 @@
             }
 
             a,
+            .toc,
             .toc .dash,
             .toc .label {
                 transition: none;
@@ -223,7 +297,12 @@
 </head>
 
 <body>
-    <nav class="toc" aria-label="Projects">
+    <button class="toc-toggle" type="button" aria-label="Jump to a project" aria-controls="project-nav"
+        aria-expanded="false">
+        <span></span><span></span><span></span>
+    </button>
+
+    <nav class="toc" id="project-nav" aria-label="Projects">
         <a href="#p-save-the-roadster"><span class="label">C++ game</span><span class="dash"></span></a>
         <a href="#p-ml-deep-learning-courses"><span class="label">Andrew Ng courses</span><span class="dash"></span></a>
         <a href="#p-bert-sentiment-pytorch"><span class="label">First model</span><span class="dash"></span></a>
@@ -239,6 +318,7 @@
         <a href="#p-vector-search-ecommerce"><span class="label">Vector search</span><span class="dash"></span></a>
         <a href="#p-smart-reviewer"><span class="label">News reviewer</span><span class="dash"></span></a>
         <a href="#p-neon-nerdsnipe"><span class="label">Login agent</span><span class="dash"></span></a>
+        <a href="#p-atlas"><span class="label">Atlas</span><span class="dash"></span></a>
         <a href="#p-sediment"><span class="label">Sediment</span><span class="dash"></span></a>
         <a href="#p-mcp-servers"><span class="label">MCP servers</span><span class="dash"></span></a>
         <a href="#p-reachcast"><span class="label">Raycast extension</span><span class="dash"></span></a>
@@ -326,7 +406,7 @@
         <p>These days I build a lot, and faster than I used to. Mostly I build to get rid
             of noise, because there are always too many threads in my head and I like
             quieting them.
-            A tool so an AI doesn't
+            <a id="p-atlas" href="https://nishilfaldu.site">A tool</a> so an AI doesn't
             waste a thousand tokens screenshotting a website when it could just test it
             first.
             <a id="p-sediment" href="https://github.com/nishilfaldu/sediment">One place</a> to throw every
@@ -344,7 +424,8 @@
             was enough.</p>
 
         <p>Outside of all this: I love stories, any kind, books, shows, short films, or
-            someone just telling me about their day. I write poetry sometimes. I'd play
+            someone just telling me about their day. And music gets me the most, whenever
+            I put something on, I feel it all the way down. I write poetry sometimes. I'd play
             sports every single day if I could, any sport, I'm not picky. I think most
             plans should just be a spontaneous hang instead of a calendar invite. And I
             love love.</p>
@@ -382,6 +463,35 @@
             Object.keys(map).forEach(function (id) {
                 var el = document.getElementById(id);
                 if (el) io.observe(el);
+            });
+        })();
+
+        // On small screens the dash stack collapses into a button that opens the list
+        (function () {
+            var toggle = document.querySelector('.toc-toggle');
+            var nav = document.querySelector('.toc');
+            if (!toggle || !nav) return;
+
+            function close() {
+                document.body.classList.remove('toc-open');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+
+            toggle.addEventListener('click', function () {
+                var open = document.body.classList.toggle('toc-open');
+                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+
+            nav.addEventListener('click', function (e) {
+                if (e.target.closest('a')) close();
+            });
+
+            document.addEventListener('click', function (e) {
+                if (!e.target.closest('.toc') && !e.target.closest('.toc-toggle')) close();
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') close();
             });
         })();
     </script>

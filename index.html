@@ -482,8 +482,23 @@
                 toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
             });
 
+            var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
             nav.addEventListener('click', function (e) {
-                if (e.target.closest('a')) close();
+                var link = e.target.closest('a');
+                if (!link) return;
+
+                // Scroll to the target ourselves so the browser does not move
+                // focus onto it (which is what draws the outline box in Chrome
+                // when the URL gains a fragment)
+                var id = link.getAttribute('href').slice(1);
+                var target = document.getElementById(id);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'start' });
+                    history.pushState(null, '', '#' + id);
+                }
+                close();
             });
 
             document.addEventListener('click', function (e) {
